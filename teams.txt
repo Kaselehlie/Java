@@ -1,4 +1,7 @@
-Library
-Theatre
-School
-City Hall
+Library - state - city
+
+Theatre - Ia - Altoona
+
+School - Fl - Tampa
+
+City Hall - Ia - Altoona
