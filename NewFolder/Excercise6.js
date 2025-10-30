@@ -3,14 +3,14 @@ const guests = {
     title: "General",
     region: "Rome",
     dietaryPreference: "Vegetarian",
-    pastGifts: ["Golden Laurel", "Chariot"]
+    pastGifts: ["Golden Laurel", "Chariot"],
   },
   CICERO: {
     title: "Orator",
     region: "Arpinum",
     dietaryPreference: "Omnivore",
-    pastGifts: ["Scroll of Proverbs", "Quill"]
-  }
+    pastGifts: ["Scroll of Proverbs", "Quill"],
+  },
 };
 
 //Step 1: Add "BRUTUS" to the guest directory. He's a "Senator" from "Rome", prefers "Vegan" food, and in the past, he has gifted Caesar a "Silver Dagger" and a "Marble Bust".
@@ -20,10 +20,11 @@ const guest = {
     title: "Senator",
     region: "Rome",
     dietaryPreference: "Vegan",
-    pastGifts: ["Silver Dagger", "Marble Bust"]
-  }}
+    pastGifts: ["Silver Dagger", "Marble Bust"],
+  },
+};
 guests.BRUTUS = guest.Brutus;
-console.log()
+console.log();
 
 //Step 2: Update CICERO's past gifts to include a "Golden Lyre".
 guests.CICERO.pastGifts.push("Golden Lyre");
@@ -41,7 +42,6 @@ console.log();
 const generalProfile = guests.ANTONY;
 generalProfile.region = "Egypt";
 console.log(guests.ANTONY.region);
-
 
 //## Question 1 : After executing Step 5, what will be the region of ANTONY in the original `guests` object?
 //Answer: The region of ANTONY in the original `guests` object will be "Egypt".
