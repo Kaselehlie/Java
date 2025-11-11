@@ -19,7 +19,6 @@ for (let i = 0; i < friend.length; i++) {
 console.log("Encrypted Name:", encryptedName); // Output the encrypted name
 // The encrypted name for "BRUTUS" with a shift of 3 is "EUXWXV"
 
-
 //Question 1: What advantage does using a loop provide over manually encrypting each letter?
 
 //Answer 1: Using a loop allows for scalability and efficiency. It enables the encryption of names of any length without needing to write repetitive code for each letter.
