@@ -8,6 +8,6 @@ function fizzBuzz(int) {
     if (int % 3 === 0 && int % 5 === 0) console.log("FizzBuzz");
     else if (int % 3 !== 0 && int % 5 !== 0) console.log(int);
 
-    if (!int> 100) console.log("error");
+    if (!int > 100) console.log("error");
   }
 }
