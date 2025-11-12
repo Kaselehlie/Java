@@ -10,7 +10,7 @@ function encryptLetter(letter, shift) {
   const newIndex = (index + shift) % alphabet.length; //add shift value to index, use % to ensure wrapping around alphabet if necessary
   return alphabet[newIndex]; //return the encrypted letter
 }
-console.log(encryptLetter);
+
 
 //step 2: Create a function named encryptMessage that takes a word and a shift value as parameters. This function should return the encrypted version of the entire word.
 
@@ -52,4 +52,4 @@ function decryptMessage(word, shift) {
 
 //Q: If Caesar encrypts the word "BRUTUS" using our encryptMessage function and then decrypts the result using our decryptMessage function, will he get "BRUTUS" back? Why or why not
 
-//Answer:
+//Answer: Yes because decryption function is like a reverse mode so the answer will just go back to the orginal answer
