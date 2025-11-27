@@ -1,70 +1,95 @@
-const alphabet = "abcdefghijklmnopqrstuvwxyz";
+//------------->PROJECT 2 redo finalized, using original message, shift value) <-----------------------------------
 
-// Source - https://stackoverflow.com/q/77951897
-// Posted by Owen Miller
-// Retrieved 2025-11-16, License - CC BY-SA 4.0
+const alphabet = "abcdefghijklmnopqrstuvwxyz"; //defining the alphabet to be used for encryption and decryption
 
 function encrypt(message, shiftValue) {
-  let encryptedMessage = ""; // somewhere for the message to be stored
-  for (i = 0; i < message.length; i++) {
-    let char = message[i].toLowerCase(); // each character made lowercase
-
-    if (alphabet.includes(char)) {
-      // if alphabet includes the character
-      const idx = alphabet.indexOf(char); // find its index
-      const newIdx = (idx + shiftValue) % alphabet.length; // then add the shift value to it     while going through the alphabet
-      encryptedMessage += alphabet[newIdx]; // add/store it as the message
-
-      if ((i + 1) % 2 === 0) {
-        const randomIndex = Math.floor(Math.random() * 26);
-        encryptedMessage += alphabet[randomIndex]; // every two character a random letter is     added
-      }
-    } else {
-      encryptedMessage += char; //Characters outside the alphabet are passed through unchanged
+  //function to encrypt the message
+  let encryptedMessage = ""; //initializing an empty string to hold the encrypted message
+  let counter = 0; //initializing a counter to keep track of letters processed
+  for (
+    let i = 0;
+    i < message.length;
+    i++ //looping through each character in the message
+  ) {
+    const index = alphabet.indexOf(message[i].toLowerCase()); //converting each letter to lowercase and finding its index in the alphabet
+    if (counter === 2) {
+      encryptedMessage += generateRandomLetter(); //instructing to add a random letter every 2 letters
+      counter = 0; //then reset counter to 0
     }
+    if (index === -1) {
+      //checking if the character is not found in the alphabet (like spaces or punctuation)
+      encryptedMessage += message[i]; //if not found, add the character as is to the encrypted message
+    } else {
+      //if the character is found in the alphabet
+      let newIndex = (index + shiftValue) % alphabet.length; //calculate the new index by shifting the original index by the shift value, wrapping around using modulo
+      if (message[i] === message[i].toUpperCase()) {
+        //checking if the original character was uppercase
+        encryptedMessage += alphabet[newIndex].toUpperCase(); //adding the new letter in uppercase to the encrypted message
+      } //if the original character was lowercase
+      else {
+        if (newIndex < 0) {
+          //if new index is negative
+          newIndex = alphabet.length + newIndex; //handle negative index by wrapping around
+        } else {
+          encryptedMessage += alphabet[newIndex]; //add the new letter in lowercase to the encrypted message
+        }
+      }
+    }
+    counter++; //incrementing the counter after processing each letter//** */ like iteration in loop moves pointer to next character
   }
-
-  return encryptedMessage;
+  return encryptedMessage; //returning the final encrypted message
 }
-
-//console log printed changes results every 2 letters, a random letter is added
+function generateRandomLetter() {
+  //function to generate a random letter from the alphabet
+  const randomIndex = Math.floor(Math.random() * alphabet.length); //generating a random index within the range of the alphabet length
+  return alphabet[randomIndex]; //returning the letter at the random index
+}
 console.log(
   encrypt(
     "Iuuuau juxuu cuytudyuwxuj uixuqtuemu euv uHeuckubkui uqdut uHuuckui.u Juxuuhuu, umxuyiufuuh ujxuu umeuhtu 'uQkuhuubyukiu' ujeu juxuu muydutiu. uQdut urou ruuyudwu qurbuu ujeu wuuju jue ujxuyiu cuuiuiquwuu, uoeuk uxquluu suecufbuujuutu juxuu gukuuiju!",
     42
   )
-);
+); //console.log printed the encrypted message, also every 2 letters a random letter is added
 
-// Source - https://stackoverflow.com/a/77951927
-// Posted by Iłya Bursov
-// Retrieved 2025-11-16, License - CC BY-SA 4.0
-
-function decrypt(encryptedMessage, shiftValue) {
-  let decryptedMessage = "";
-
-  for (i = 0; i < encryptedMessage.length; i++) {
-    if ((i + 1) % 3 != 0) {
-      // ignore random insertions
-      const char = encryptedMessage[i].toLowerCase();
-      const idx = alphabet.indexOf(char);
-      if (idx >= 0) {
-        let newIdx = idx - shiftValue;
-        while (newIdx < 0) newIdx += alphabet.length; // here is how you avoid negative indexes
-        decryptedMessage += alphabet[newIdx % alphabet.length];
-      } else {
-        decryptedMessage += char;
-      }
+//..........<-----------decrypt------------------->
+function decrypt(message, shiftValue) {
+  //function to decrypt the message
+  let decryptedMessage = ""; //initializing an empty string to hold the decrypted message
+  let counter = 0; //initializing a counter to keep track of letters processed
+  for (let i = 0; i < message.length; i++) {
+    //looping through each character in the message
+    const index = alphabet.indexOf(message[i].toLowerCase()); //finding the index of each letter in the alphabet to lowercase
+    if (counter === 2) {
+      //checking if the counter has reached 2
+      counter = 0;
+      continue; // Skip the random letter
     }
-  }
-  // Your decryption code here
-  return decryptedMessage;
-}
+    if (index === -1) {
+      //checking if the character is not found in the alphabet
+      decryptedMessage += message[i]; //if not found, add the character as is to the decrypted message
+    } else {
+      let newIndex = (index - shiftValue) % alphabet.length; //calculating the new index by shifting the original index back by the shift value
 
-//secret message + 42 as shift value
+      if (newIndex < 0) {
+        //if new index is negative
+        //handle negative index by wrapping around
+        newIndex = alphabet.length + newIndex; //adjusting the new index if it's negative
+      }
+      decryptedMessage += alphabet[newIndex]; //adding the new letter to the decrypted message
+    }
+    counter++; //incrementing the counter after processing each letter
+  }
+  return decryptedMessage; //returning the final decrypted message
+}
 console.log(
   decrypt(
     "Iuuuau juxuu cuytudyuwxuj uixuqtuemu euv uHeuckubkui uqdut uHuuckui.u Juxuuhuu, umxuyiufuuh ujxuu umeuhtu 'uQkuhuubyukiu' ujeu juxuu muydutiu. uQdut urou ruuyudwu qurbuu ujeu wuuju jue ujxuyiu cuuiuiquwuu, uoeuk uxquluu suecufbuujuutu juxuu gukuuiju!",
     42
   )
 );
-//console printed: "seek the midnight shadow of romulus and remus. there, whisper the word 'aurelius' to the winds. and by being able to get to this message, you have completed the quest!"
+//console printed seek the midnight shadow of romulus and remus. there, whisper the word 'aurelius' to the winds. and by being able to get to this message, you have completed the quest!
+
+//<-----------to my mentor; I tried to test encrypt and decrypt together, did not work------------------->
+//console.log(decrypt(encrypt("Iuuuau juxuu cuytudyuwxuj uixuqtuemu euv uHeuckubkui uqdut uHuuckui.u Juxuuhuu, umxuyiufuuh ujxuu umeuhtu 'uQkuhuubyukiu' ujeu juxuu muydutiu. uQdut urou ruuyudwu qurbuu ujeu wuuju jue ujxuyiu cuuiuiquwuu, uoeuk uxquluu suecufbuujuutu juxuu gukuuiju!", 42), 42));
+
+//reference: Modified operation/task (- comments) by my Mentor Mr.Taofeek Adesina, SpringBoard; retrieved via zoom messages on 11/19/2025;
