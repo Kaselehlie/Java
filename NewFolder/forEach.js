@@ -7,7 +7,7 @@
 
 function doubleValues(arr) {
   let newArr = [];
-  arr.forEach(function(val) {
+  arr.forEach(function (val) {
     newArr.push(val * 2);
   });
   return newArr;
@@ -38,14 +38,13 @@ function onlyEvenValues(arr) {
 //*******SPRINGBOARD****** *
 function onlyEvenValues(arr) {
   let newArr = [];
-  arr.forEach(function(val) {
+  arr.forEach(function (val) {
     if (val % 2 === 0) {
       newArr.push(val);
     }
   });
   return newArr;
 }
-
 
 /*---------------------------------------------------------------------------------------SpringBoard
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
@@ -57,7 +56,7 @@ Examples:
 */
 function showFirstAndLast(arr) {
   let newArr = [];
-  arr.forEach(function(val) {
+  arr.forEach(function (val) {
     newArr.push(val[0] + val[val.length - 1]);
   });
   return newArr;
@@ -72,9 +71,9 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
-function addKeyAndValue(arr, key, value) //array of objects
-{
-  arr.forEach(function(val) {
+function addKeyAndValue(arr, key, value) {
+  //array of objects
+  arr.forEach(function (val) {
     val[key] = value;
   });
   return arr;
@@ -102,8 +101,8 @@ function vowelCount(str) {
   let obj = {};
   const vowels = "aeiou";
 
-  splitArr.forEach(function(letter) {
-    let lowerCasedLetter = letter.toLowerCase()
+  splitArr.forEach(function (letter) {
+    let lowerCasedLetter = letter.toLowerCase();
     if (vowels.indexOf(lowerCasedLetter) !== -1) {
       if (obj[lowerCasedLetter]) {
         obj[lowerCasedLetter]++;
