@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="MG.css" />
+
+    <img
+      src="https://dg.imgix.net/do-you-think-you-re-happy-jgdbfiey-en/landscape/do-you-think-you-re-happy-jgdbfiey-9bb0198eeccd0a3c3c13aed064e2e2b3.jpg?ts=1520525855&ixlib=rails-4.3.1&auto=format%2Ccompress&fit=min&w=700&h=394&dpr=2&ch=Width%2CDPR"
+      width="100"
+      height="100"
+    />
+  </head>
+  <body>
+    <h1>Easy Meme Generator</h1>
+    <div class="meme-generator">
+      <form id="meme-form">
+        <!-- Meme input form -->
+        <input type="text" id="top-text" placeholder="Top Text" required />
+        <input
+          type="text"
+          id="bottom-text"
+          placeholder="Bottom Text"
+          required
+        />
+        <input
+          type="url"
+          id="image-url"
+          placeholder="Image URL"
+          required
+        /><!-- Image URL input -->
+        <button type="submit">Generate Meme</button>
+      </form>
+      <div id="meme-container"></div>
+      <!-- Container for generated memes -->
+    </div>
+
+    <script src="MG.js"></script>
+  </body>
+</html>
