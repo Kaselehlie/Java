@@ -1,0 +1,34 @@
+/* Your Styles Here */
+.form-container {
+  margin: 20px;
+  border: solid;
+}
+/* Add more styles as needed */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(255, 0, 166);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px;
+}
+
+.gif {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+#gif-container {
+  /* Container for all memes */
+  display: flex; /* Flexbox layout */
+  flex-wrap: wrap; /* Allow wrapping */
+  justify-content: center; /* Center items */
+  gap: 20px; /* Space between memes */
+  border: solid;
+  padding: 30px;
+}
