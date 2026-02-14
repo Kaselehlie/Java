@@ -1,34 +1,107 @@
-/* Your Styles Here */
+/*style for the form container */
 .form-container {
-  margin: 20px;
+  margin: 30px;
   border: solid;
+  padding: 20px;
+  display: flex;
 }
-/* Add more styles as needed */
+
 body {
-  font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
-  background-color: rgb(255, 0, 166);
+  background-color: rgb(123, 80, 123);
 }
 
+/* Style for the title */
+h1 {
+  color: white;
+  text-shadow: 4px 4px 6px #d109cd;
+  font-size: 60px;
+  font-family: "times new roman", times, serif;
+}
+
+/* Style for the search input */
+#search-input {
+  padding: 10px;
+  width: 150px;
+  font-size: 16px;
+  border: 5px solid #14db14;
+  border-radius: 30px;
+}
+#search-input:hover {
+  border-color: #e007c7;
+}
+
+/* Style for the buttons */
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+button:hover {
+  background-color: #980598;
+}
+
+#delete-gifs {
+  /* Style for the Reset search button */
+  margin: 10px;
+  padding: 8px 10px;
+  font-size: 12px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+}
+#delete-gifs:hover {
+  background-color: #b108b1;
+}
+
+/* Style for the gifs */
 img {
-  max-width: 100%;
+  max-width: 200px;
   height: auto;
   margin: 10px;
+  border: solid 2px rgb(233, 233, 228);
+  box-shadow: black 5px 5px 10px;
+  padding: 10px;
+  border: 50px; /* adding this gave the pop out effect */
 }
 
-.gif {
+image-container {
   position: relative;
   display: inline-block;
-  text-align: center;
 }
 
-#gif-container {
-  /* Container for all memes */
-  display: flex; /* Flexbox layout */
-  flex-wrap: wrap; /* Allow wrapping */
-  justify-content: center; /* Center items */
-  gap: 20px; /* Space between memes */
-  border: solid;
-  padding: 30px;
+/* Style for the container that holds all the gifs */
+.gif-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style for the delete button on each gif */
+.delete-btn {
+  position: absolute; /* to position the delete button on top of the gif */
+  top: 10px; /* to position the delete button on the top right corner of the gif */
+  right: 10px; /* to position the delete button on the top right corner of the gif */
+  background-color: #ff0000;
+  color: rgb(246, 244, 244);
+  border: none; /* to remove the default border of the button */
+  padding: 1px 1px; /* to make the delete button smaller and less obtrusive */
+  border-radius: 50%; /* to make the delete button circular */
+  cursor: pointer; /* to change the cursor to a pointer when hovering over the delete button */
+  opacity: 0; /* to make the delete button invisible by default */
+  transition: opacity 0.3s ease; /* to add a transition effect when the delete button becomes visible */
+}
+
+.gif-container:hover .delete-btn {
+  opacity: 1; /* to make the delete button visible when hovering over the gif container */
 }

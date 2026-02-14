@@ -6,37 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giphy Party</title>
     <link rel="stylesheet" href="./giphy.css">
-  </head> 
+  </head>
   <body>
+    
     <main>
-      <h1>Giphy Party</h1> 
-      <div>
-        <!-- Think about placing the form here -->
-<form id="search-form">
-    
-    
-  <input type="text" 
-        id="search-input" 
-        placeholder="Search for GIFs">
-  <button type="submit">Search</button>
- <input type="button"
-          id="delete-gifs"
-          value="Delete GIF">
 
-  
-  </form>
+      <h1> Project Giphy Party</h1> <img src="https://www.alwaysonpurpose.com/wp-content/uploads/2019/11/happypeople-1024x679.jpg">
 
-      </div>
-      <div>
+     <!-- Form for searching GIFs -->
+        <div> 
+<form id="search-form"> <!-- Added an ID for easier JavaScript access -->
+
         
-        <!-- Think about displaying the results here -->
-         <div id="gif-container">
+  <input type="text" 
+  required 
+        id="search-input" 
+        placeholder="Search for GIFs"> <!--please fill in field command-->
 
+  <button id="search-submit" 
+   type="submit">Search</button><!--Search box -->
+  
+  <button id="delete-gifs"
+   type="button">Reset Search</button>
+    <!--Delete button -->
+        
+  </form>
+<!-- Container for displaying search results -->
+        <div id="results-container"></div>
 
+        <!-- form to search random gifs-->
+         <form id="random-form"> 
 
-      </div>
-     
-    </main>
+<!--Random GIF button -->          
+  <button id="random-submit" 
+   type="submit">Random GIF</button>
+  
+
+   <!--Delete button for random gifs -->
+   <button id="delete-random-gifs"
+   type="button">Reset Random</button> 
+  </form>  
+ 
+             
+ </main>
     <!-- Axios is already imported here for your convenience -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="giphy.js"></script>
