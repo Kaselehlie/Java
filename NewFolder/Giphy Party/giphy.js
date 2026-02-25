@@ -65,13 +65,19 @@ function appendGifs(gifs) {
   gifs.forEach((gif) => {
     const gifContainer = document.createElement("div");
     gifContainer.classList.add("gif-container"); //styled with CSS to position the delete button on top of the gif
+    resultsContainer.classList.add("results-container"); //to add a class to the results container for styling purposes
 
     const img = document.createElement("img"); //set the source of the image to the gif URL
+    img.classList.add("gif-image"); //to add a class to the image for styling purposes
     img.src = gif.images.fixed_height.url;
 
     const deleteBtn = document.createElement("button"); //to create a delete button for each gif
+    const downloadButton = document.createElement("button"); //to create a download button for each gif
+    downloadButton.innerHTML = '<i class="bi bi-download"></i>'; //to set the inner HTML of the downloa
+    downloadButton.classList.add("download-btn"); //to add a class to the download button for styling purposes
     deleteBtn.textContent = "X"; //to set the text content of the delete button to "X"
     deleteBtn.classList.add("delete-btn");
+    downloadButton.classList.add("download-btn"); //to add a class to the download button for styling purposes
     //an event listener to the delete button to remove the gif container when clicked
     deleteBtn.addEventListener("click", function () {
       resultsContainer.removeChild(gifContainer);
@@ -79,6 +85,7 @@ function appendGifs(gifs) {
 
     gifContainer.appendChild(img);
     gifContainer.appendChild(deleteBtn);
+    gifContainer.appendChild(downloadButton);
     resultsContainer.appendChild(gifContainer);
   });
 }

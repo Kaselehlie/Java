@@ -33,7 +33,7 @@ h1 {
 }
 
 /* Style for the buttons */
-button {
+button:not(.delete-btn, .download-btn) {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
@@ -66,25 +66,46 @@ button:hover {
 }
 
 /* Style for the gifs */
-img {
+img.gif-image {
   max-width: 200px;
   height: auto;
   margin: 10px;
   border: solid 2px rgb(233, 233, 228);
   box-shadow: black 5px 5px 10px;
   padding: 10px;
-  border: 50px; /* adding this gave the pop out effect */
+  border: 50px;
 }
 
-image-container {
+img:not(.gif-image) {
+  max-width: 200px;
+  height: auto;
+  margin: 10px;
+  border: solid 2px rgb(233, 233, 228);
+  box-shadow: black 5px 5px 10px;
+  padding: 10px;
+  border: 50px;
+}
+.image-container {
   position: relative;
   display: inline-block;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Style for the container that holds all the gifs */
 .gif-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+}
+
+#gif-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Style for the delete button on each gif */
@@ -100,8 +121,30 @@ image-container {
   cursor: pointer; /* to change the cursor to a pointer when hovering over the delete button */
   opacity: 0; /* to make the delete button invisible by default */
   transition: opacity 0.3s ease; /* to add a transition effect when the delete button becomes visible */
+  width: 30px;
+  height: 30px;
+}
+
+.download-btn {
+  position: absolute; /* to position the download button on top of the gif */
+  top: 10px; /* to position the download button on the top right corner of the gif */
+  left: 10px; /* to position the download button on the top right corner of the gif */
+  background-color: #00ff0d;
+  color: rgb(246, 244, 244);
+  border: none; /* to remove the default border of the button */
+  padding: 1px 1px; /* to make the delete button smaller and less obtrusive */
+  border-radius: 50%; /* to make the delete button circular */
+  cursor: pointer; /* to change the cursor to a pointer when hovering over the delete button */
+  opacity: 0; /* to make the delete button invisible by default */
+  transition: opacity 0.3s ease; /* to add a transition effect when the delete button becomes visible */
+  width: 30px;
+  height: 30px;
 }
 
 .gif-container:hover .delete-btn {
   opacity: 1; /* to make the delete button visible when hovering over the gif container */
+}
+
+.gif-container:hover .download-btn {
+  opacity: 1; /* to make the download button visible when hovering over the gif container */
 }
